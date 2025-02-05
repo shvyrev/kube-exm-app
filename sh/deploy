@@ -1,0 +1,5 @@
+#/bin/bash
+
+kubectl delete deployment kube-exm-app
+sh/run
+kubectl apply -f templates/custom-controller.yaml

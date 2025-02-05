@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./mvnw package -DskipTests
+docker build -f src/main/docker/Dockerfile.jvm -t shvyrev/kube-exm-app .
+k3d image import shvyrev/kube-exm-app -c home --verbose
+docker login
+docker tag kube-exm-app shvyrev/kube-exm-app
+docker image push shvyrev/kube-exm-app
